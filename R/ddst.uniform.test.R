@@ -1,6 +1,5 @@
 `ddst.uniform.test` <-
 function(x, base = ddst.base.legendre, c = 2.4, B=1000, compute.p = F, Dmax = 10, ...) {
- data(ddst.polynomial.fun)
 
 # method.name = as.character(substitute(base)) 
  # only Legendre is implemented yet

@@ -1,11 +1,11 @@
 Package: ddst
 Type: Package
-Title: Data driven smooth Neyman test
-Version: 1.0
-Date: 2008-07-14
-Author: Przemyslaw Biecek, Teresa Ledwina
+Title: Data driven smooth test
+Version: 1.01
+Date: 2008-08-08
+Author: Przemyslaw Biecek (R code), Teresa Ledwina (support, descriptions)
 Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>
-Description: Support for adaptive testing
+Description: Support for data driven testing
 License: GPL-2
 Depends: R (>= 2.1.0), orthopolynom, evd
-Packaged: Fri Aug  8 16:31:42 2008; przemek
+Packaged: Sun Sep 28 02:33:02 2008; przemek
