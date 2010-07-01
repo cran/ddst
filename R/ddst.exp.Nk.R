@@ -1,6 +1,6 @@
 `ddst.exp.Nk` <-
 function(x, base = ddst.base.legendre, Dmax = 5, n=length(x)) {
-er = .Internal(mean(x))
+er = mean(x)
 maxN = max(min(Dmax, n-2, 20),1)
 coord = numeric(maxN)
 u = numeric(maxN)

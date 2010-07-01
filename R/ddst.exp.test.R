@@ -10,7 +10,7 @@ n = length(x)
 if(n<5) 
 	stop("length(x) should be at least 5")
 
-er = .Internal(mean(x))
+er = mean(x)
 maxN = max(min(Dmax, n-2, 20),1)
 coord = numeric(maxN)
 u = numeric(maxN)
@@ -34,7 +34,7 @@ tmpC = ddst.exp.Nk(y, base, Dmax = Dmax, n=length(y))
 l = ddst.IIC(tmpC, n, c)
 tmp[i] = tmpC[l]
 }
-p.val = .Internal(mean(tmp > t))
+p.val = mean(tmp > t)
 result$p.value = p.val  
 }
 result

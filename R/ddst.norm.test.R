@@ -9,12 +9,12 @@ function(x, base = ddst.base.legendre, c = 100, B=1000, compute.p = F, Dmax = 5,
 n = length(x)
 if(n<5) 
 	stop("length(x) should be at least 5")
-er1 = .Internal(mean(x))
+er1 = mean(x)
 sx  = sort(x)
 H   = qnorm((1:n - 3/8)/(n+1/4))
-er2 = .Internal(mean((sx[-1] - sx[-n])/(H[-1] - H[-n])))
+er2 = mean((sx[-1] - sx[-n])/(H[-1] - H[-n]))
 pp   = (x-er1)/er2
-tmpp = c(.Internal(mean(pp)), (.Internal(mean(pp^2)) - 1)/2)
+tmpp = c(mean(pp), (mean(pp^2) - 1)/2)
 
 maxN = max(min(Dmax, length(x)-2, 20),1)
 u = numeric(maxN)
@@ -42,7 +42,7 @@ tmpC = ddst.norm.Nk(y, base, Dmax = Dmax, n=length(y))
 l = ddst.IIC(tmpC, n, c)
 tmp[i] = tmpC[l]
 }
-p.val = .Internal(mean(tmp > t))
+p.val = mean(tmp > t)
 result$p.value = p.val  
 }
 result

@@ -25,7 +25,7 @@ if(n<5)
         l = ddst.IIC(tmpC, n, c)
         tmp[i] = tmpC[l]
      }
-     result$p.value = .Internal(mean(tmp > t))
+     result$p.value = mean(tmp > t)
   }
   result
 }

@@ -17,7 +17,7 @@ Set of data driven smooth goodnes of fit tests.
 \tabular{ll}{
 Package: \tab ddst\cr
 Type: \tab Package\cr
-Version: \tab 1.0\cr
+Version: \tab 1.3\cr
 Date: \tab 2008-07-01\cr
 License: \tab GPL-2\cr
 }
