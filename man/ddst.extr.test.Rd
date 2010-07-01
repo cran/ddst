@@ -22,14 +22,14 @@ ddst.extr.test(x, base = ddst.base.legendre, c = 100, B = 1000, compute.p = F, D
 \details{
 Null density is given by 
 \emph{
-$f(z;\gamma)=1/\gamma_2 exp((z-\gamma_1)/\gamma_2- exp((z-\gamma_1)/\gamma_2))$}, z in R.
+$f(z;gamma)=1/gamma_2 exp((z-gamma_1)/gamma_2- exp((z-gamma_1)/gamma_2))$}, z in R.
 
 We model alternatives similarly as in Kallenberg and Ledwina (1997) and Janic-Wroblewska (2004) using Legendre's polynomials or cosines. The parameter 
-\emph{$\gamma=(\gamma_1,\gamma_2)$} is estimated by \emph{$\tilde \gamma=(\tilde \gamma_1,\tilde \gamma_2)$}, where \emph{$\tilde \gamma_1=-1/n \sum_{i=1}^n Z_i + \varepsilon  G$}, where \emph{$\varepsilon \approx 0.577216 $} is the Euler constant and \emph{$ G = \tilde \gamma_2 = [n(n-1) \ln2]^{-1}\sum_{1<= j < i <= n}(Z_{n:i}^o - Z_{n:j}^o) $} while \emph{$Z_{n:1}^o <= ... <= Z_{n:n}^o$}
+\emph{$gamma=(gamma_1,gamma_2)$} is estimated by \emph{$tilde gamma=(tilde gamma_1,tilde gamma_2)$}, where \emph{$tilde gamma_1=-1/n sum_{i=1}^n Z_i + varepsilon  G$}, where \emph{$varepsilon approx 0.577216 $} is the Euler constant and \emph{$ G = tilde gamma_2 = [n(n-1) ln2]^{-1}sum_{1<= j < i <= n}(Z_{n:i}^o - Z_{n:j}^o) $} while \emph{$Z_{n:1}^o <= ... <= Z_{n:n}^o$}
 are ordered variables \emph{$-Z_1,...,-Z_n$}, cf Hosking et al. (1985). 
-The above yields auxiliary test statistic \emph{$W_k^*(\tilde \gamma)$} described in details in Janic and Ledwina (2008), in case when Legendre's basis is applied. 
+The above yields auxiliary test statistic \emph{$W_k^*(tilde gamma)$} described in details in Janic and Ledwina (2008), in case when Legendre's basis is applied. 
 
-The related matrix \emph{$[I^*(\tilde \gamma)]^{-1}$} does not  depend on \emph{$\tilde \gamma$} and is calculated for succeding dimensions \emph{k} using some recurrent relations for Legendre's polynomials and numerical methods for cosine functions. In the implementation the default value of \emph{c} in \emph{$T^*$} was fixed to be 100. Hence, \emph{$T^*$} is Schwarz-type model selection rule. The resulting data driven test statistic for extreme value distribution is \emph{$W_{T^*}=W_{T^*}(\tilde \gamma)$}.
+The related matrix \emph{$[I^*(tilde gamma)]^{-1}$} does not  depend on \emph{$tilde gamma$} and is calculated for succeding dimensions \emph{k} using some recurrent relations for Legendre's polynomials and numerical methods for cosine functions. In the implementation the default value of \emph{c} in \emph{$T^*$} was fixed to be 100. Hence, \emph{$T^*$} is Schwarz-type model selection rule. The resulting data driven test statistic for extreme value distribution is \emph{$W_{T^*}=W_{T^*}(tilde gamma)$}.
 
 For more details see: \url{http://www.biecek.pl/R/ddst/description.pdf}.
 

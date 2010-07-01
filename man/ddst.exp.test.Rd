@@ -21,12 +21,12 @@ ddst.exp.test(x, base = ddst.base.legendre, c = 100, B = 1000, compute.p = F, Dm
 }
 \details{
 
-Null density is given by \emph{$f(z;\gamma) = exp(-z/\gamma)$}  for z >= 0 and 0 otherwise.  
+Null density is given by \emph{$f(z;gamma) = exp(-z/gamma)$}  for z >= 0 and 0 otherwise.  
 
-Modelling alternatives similarly as in Kallenberg and Ledwina (1997 a,b), e.g., and estimating \emph{$\gamma$} by \emph{$\tilde \gamma= 1/n \sum_{i=1}^n Z_i$} yields the efficient score 
-vector \emph{$l^*(Z_i;\tilde \gamma)=(phi_1(F(Z_i;\tilde \gamma)),...,phi_k(F(Z_i;\tilde \gamma)))$}, where \emph{$phi_j$}'s are	\emph{j}th degree orthonormal Legendre polynomials on [0,1] or cosine functions \emph{$sqrt(2) cos(\pi j x), j>=1$,} while \emph{$F(z;\gamma)$} is the distribution function pertaining to \emph{$f(z;\gamma)$}. 
+Modelling alternatives similarly as in Kallenberg and Ledwina (1997 a,b), e.g., and estimating \emph{$gamma$} by \emph{$tilde gamma= 1/n sum_{i=1}^n Z_i$} yields the efficient score 
+vector \emph{$l^*(Z_i;tilde gamma)=(phi_1(F(Z_i;tilde gamma)),...,phi_k(F(Z_i;tilde gamma)))$}, where \emph{$phi_j$}'s are	\emph{j}th degree orthonormal Legendre polynomials on [0,1] or cosine functions \emph{$sqrt(2) cos(pi j x), j>=1$,} while \emph{$F(z;gamma)$} is the distribution function pertaining to \emph{$f(z;gamma)$}. 
 
-The matrix \emph{$[I^*(\tilde \gamma)]^{-1}$} does not  depend on \emph{$\tilde \gamma$} and is calculated for succeding dimensions \emph{k} using some recurrent relations for Legendre's polynomials and computed in a numerical way in case of cosine basis. In the implementation the default value of \emph{c} in \emph{$T^*$} is set to be 100. 
+The matrix \emph{$[I^*(tilde gamma)]^{-1}$} does not  depend on \emph{$tilde gamma$} and is calculated for succeding dimensions \emph{k} using some recurrent relations for Legendre's polynomials and computed in a numerical way in case of cosine basis. In the implementation the default value of \emph{c} in \emph{$T^*$} is set to be 100. 
 
 Therefore, \emph{$T^*$} practically coincides with S1 considered in Kallenberg and Ledwina (1997 a).
 
