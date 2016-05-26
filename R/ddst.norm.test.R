@@ -35,15 +35,29 @@ result = list(statistic = t, parameter = l, method = "Data Driven Smooth Test fo
 result$data.name = paste(paste(as.character(substitute(x)), collapse=""), ",   base: ", method.name, ",   c: ", c, sep="")
 class(result) = "htest"
 if (compute.p) {
-tmp = numeric(B)
-for (i in 1:B) {
-y = rnorm(n)
-tmpC = ddst.norm.Nk(y, base, Dmax = Dmax, n=length(y))
-l = ddst.IIC(tmpC, n, c)
-tmp[i] = tmpC[l]
-}
-p.val = mean(tmp > t)
-result$p.value = p.val  
+  ns <- as.numeric(rownames(tabNorm))
+  ts <- as.numeric(colnames(tabNorm))
+  n1 <- min(nrow(tabNorm), nrow(tabNorm) + 1 - sum(ns >= n))
+  n2 <- max(1, sum(ns <= n))
+  
+  t1 <- min(ncol(tabNorm), ncol(tabNorm) + 1 - sum(ts >= t))
+  t2 <- max(1, sum(ts <= t))
+  
+  del1 <- (t - ts[t1])/min(diff(ts[c(t1,t2)]),-10^-6)
+  del2 <- (n - ns[n1])/min(diff(ns[c(n1,n2)]),-10^-6)
+  
+  tmpwt <- tabNorm[n1,t1] + del2 * diff(tabNorm[c(n1,n2),t1]) + del1 * diff(tabNorm[n1,c(t1,t2)])
+  
+  p.val =10^(-tmpwt*(t^0.71*log(n)))
+# tmp = numeric(B)
+# for (i in 1:B) {
+# y = rnorm(n)
+# tmpC = ddst.norm.Nk(y, base, Dmax = Dmax, n=length(y))
+# l = ddst.IIC(tmpC, n, c)
+# tmp[i] = tmpC[l]
+# }
+# p.val = mean(tmp > t)
+ result$p.value = p.val  
 }
 result
 }

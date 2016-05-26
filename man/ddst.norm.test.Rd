@@ -1,5 +1,6 @@
 \name{ddst.norm.test}
 \alias{ddst.norm.test}
+\alias{tabNorm}
 \alias{ddst.norm.Nk}
 %- Also NEED an '\alias' for EACH other topic documented here.
 \title{ Data Driven Smooth Test for Normality }
@@ -7,7 +8,8 @@
 Performs data driven smooth test for composite hypothesis of normality.
 }
 \usage{
-ddst.norm.test(x, base = ddst.base.legendre, c = 100, B = 1000, compute.p = F, Dmax = 5, ...)
+ddst.norm.test(x, base = ddst.base.legendre, c = 100, B = 1000, compute.p = F, 
+    Dmax = 5, ...)
 }
 %- maybe also 'usage' for other objects documented here.
 \arguments{
