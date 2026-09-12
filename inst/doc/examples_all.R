@@ -1,0 +1,281 @@
+## ----setup, include=FALSE-----------------------------------------------------
+knitr::opts_chunk$set(echo = TRUE)
+
+## ----warning=FALSE, message=FALSE---------------------------------------------
+library("ddst")
+library("polynom")
+
+## -----------------------------------------------------------------------------
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+z <- runif(80)
+t <- ddst.uniform.test(z, compute.p = TRUE, 
+                       compute.cv = TRUE, 
+                       d.n = 10)
+t
+plot(t)
+
+
+# H0 is false
+z <- rbeta(80,4,2)
+t <- ddst.uniform.test(z, compute.p = TRUE,compute.cv = TRUE,  d.n = 10)
+t
+t$p.value
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+z <- rexp(80,4)
+t <- ddst.exp.test(z, compute.p = TRUE, d.n = 10)
+t
+plot(t)
+
+
+# H0 is false
+z = rchisq(80,4)
+t = ddst.exp.test (z, compute.p = TRUE, d.n = 10)
+t
+t$p.value
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+z <- rnorm(100)
+# let's look on first 10 coordinates
+d.n <- 10
+t <- ddst.normbounded.test(z, compute.p = TRUE, d.n = d.n)
+t
+plot(t)
+
+# H0 is false
+z <- rexp(100, 1)
+t <- ddst.normbounded.test(z, compute.p = TRUE, d.n = d.n)
+t
+plot(t)
+
+# for Tephra data
+z <- c(-1.748789, -1.75753, -1.740102, -1.740102, -1.731467, -1.765523,
+     -1.761521, -1.72522, -1.80371, -1.745624, -1.872957, -1.729121,
+     -1.81529, -1.888637, -1.887761, -1.881645, -1.91518, -1.849769,
+     -1.755141, -1.665687, -1.764721, -1.736171, -1.736956, -1.737742,
+     -1.687537, -1.804534, -1.790593, -1.808661, -1.784081, -1.729903,
+     -1.711263, -1.748789, -1.772755, -1.72756, -1.71358, -1.821116,
+     -1.839588, -1.839588, -1.830321, -1.807835, -1.747206, -1.788147,
+     -1.759923, -1.786519, -1.726779, -1.738528, -1.754345, -1.781646,
+     -1.641949, -1.755936, -1.775175, -1.736956, -1.705103, -1.743255,
+     -1.82613, -1.826967, -1.780025, -1.684504, -1.751168)
+t <- ddst.normbounded.test(z, compute.p = TRUE, Dmax = d.n)
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+z <- rnorm(100)
+# let's look on first 10 coordinates
+d.n <- 10
+
+# calculate finite sample corrections
+# see 6.2. Composite null hypothesis H in the appendix materials
+e.v <- ddst.normunbounded.bias(n = length(z), d.n = d.n)
+e.v
+
+
+# simulated 1-alpha qunatiles, s(n, alpha) 
+# see Table 1 in the JSCS article
+s.n.alpha <- 4.4
+r.alpha <- 2.708
+
+t <- ddst.normubounded.test(z, d.n, e.v$e.0, e.v$v.0, r.alpha, s.n.alpha)
+t
+plot(t)
+
+# H0 is false, same lenght n = 100
+z <- rexp(100, 1)
+
+t <- ddst.normubounded.test(z, d.n, e.v$e.0, e.v$v.0, r.alpha, s.n.alpha)
+t
+plot(t)
+
+
+# for Tephra data
+z <- c(-1.748789, -1.75753, -1.740102, -1.740102, -1.731467, -1.765523,
+       -1.761521, -1.72522, -1.80371, -1.745624, -1.872957, -1.729121,
+       -1.81529, -1.888637, -1.887761, -1.881645, -1.91518, -1.849769,
+       -1.755141, -1.665687, -1.764721, -1.736171, -1.736956, -1.737742,
+       -1.687537, -1.804534, -1.790593, -1.808661, -1.784081, -1.729903,
+       -1.711263, -1.748789, -1.772755, -1.72756, -1.71358, -1.821116,
+       -1.839588, -1.839588, -1.830321, -1.807835, -1.747206, -1.788147,
+       -1.759923, -1.786519, -1.726779, -1.738528, -1.754345, -1.781646,
+       -1.641949, -1.755936, -1.775175, -1.736956, -1.705103, -1.743255,
+       -1.82613, -1.826967, -1.780025, -1.684504, -1.751168)
+
+# calculate finite sample corrections
+e.v <- ddst.normunbounded.bias(n = length(z))
+e.v
+
+# simulated 1-alpha qunatiles, s(n, alpha) and  s.o(n, alpha)
+# see Table 1 in the JSCS article
+s.n.alpha <- 3.3
+r.alpha <- 2.142
+
+t <- ddst.normubounded.test(z, d.n, e.v$e.0, e.v$v.0, r.alpha, s.n.alpha)
+t
+
+plot(t)
+
+## -----------------------------------------------------------------------------
+library(evd)
+set.seed(7)
+
+
+# H0 is true
+x <- -qgumbel(runif(100), -1, 1)
+t <- ddst.evd.test (x, compute.p = TRUE, d.n = 10)
+t
+plot(t)
+
+
+# H0 is false
+x <- rexp(80,4)
+t <- ddst.evd.test (x, compute.p = TRUE, d.n = 10)
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is false
+x <- runif(80)
+y <- rexp(80, 1)
+t <- ddst.twosample.test(x, y, compute.p = TRUE)
+t
+plot(t)
+
+# H0 is false
+x <- runif(80)
+y <- rexp(80, 1)
+z <- runif(80)
+t <- ddst.ksample.test(list(x, y, z))
+t
+plot(t)
+
+# H0 is true
+x <- rnorm(80)
+y <- rnorm(80)
+z <- rnorm(80)
+t <- ddst.ksample.test(list(x, y, z))
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+library("rmutil", warn.conflicts = FALSE)
+# H0 is false
+# 1. Pareto(1)/Pareto(1.5)
+x <- rpareto(50, 2, 2)
+y <- rpareto(50, 1.5, 1.5)
+t <- ddst.forstochdom.test(x, y, t = 2.2, K.N = 4)
+t
+plot(t)
+
+# H0 is false
+# 2. Laplace(0,1)/Laplace(1,25)
+x <- rlaplace(50, 0, 1)
+y <- rlaplace(50, 1, 25)
+t <- ddst.forstochdom.test(x, y, t = 2.2, K.N = 4)
+t
+plot(t)
+
+# H0 is true
+# 3. LN(0.85,0.6)/LN(1.2,0.2)
+x <- rlnorm(50, 0.85, 0.6)
+y <- rlnorm(50, 1.2, 0.2)
+t <- ddst.forstochdom.test(x, y, t = 2.2, K.N = 4)
+t
+plot(t)
+
+## ----warning=FALSE, message=FALSE---------------------------------------------
+set.seed(7)
+# H0 is true
+x <- runif(80)
+y <- runif(80)
+t <- ddst.againststochdom.test(x, y, alpha = 0.05, t = 2.2, k.N = 4)
+t
+plot(t)
+
+# H0 is false
+x <- runif(80)
+y <- rbeta(80, 4, 2)
+t <- ddst.againststochdom.test(x, y, alpha = 0.05, t = 2.2, k.N = 4)
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+x = runif(80)
+y = runif(80) + 0.2
+z = runif(80) + 0.4
+t <- ddst.upwardtrend.test(list(x, y, z), t.p = 2.2, t.n = 2.2)
+t
+plot(t)
+
+
+# H0 is false
+x1 = rnorm(80)
+x2 = rnorm(80) + 2
+x3 = rnorm(80) + 4
+x4 = rnorm(80) + 3
+t <- ddst.upwardtrend.test(list(x1, x2, x3, x4), t.p = 2.2, t.n = 2.2)
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+set.seed(7)
+# H0 is true
+x = runif(80)
+y = runif(80) + 0.2
+z = runif(80)
+t <- ddst.umbrellaknownp.test(list(x, y, z), p = 2, t.p = 2.2, t.n = 2.2)
+t
+plot(t)
+
+
+# H0 is true
+x1 = rnorm(80)
+x2 = rnorm(80) + 2
+x3 = rnorm(80) + 4
+x4 = rnorm(80) + 3
+x5 = rnorm(80) + 2
+x6 = rnorm(80) + 1
+x7 = rnorm(80)
+t <- ddst.umbrellaknownp.test(list(x1, x2, x3, x4, x5, x6, x7), p = 3, t.p = 2.2, t.n = 2.2)
+t
+plot(t)
+
+
+t <- ddst.umbrellaknownp.test(list(x1, x2, x3, x4, x5, x6, x7), p = 5, t.p = 2.2, t.n = 2.2)
+t
+plot(t)
+
+## -----------------------------------------------------------------------------
+# true umbrella pattern
+x1 = rnorm(80)
+x2 = rnorm(80) + 2
+x3 = rnorm(80) + 4
+x4 = rnorm(80) + 3
+x5 = rnorm(80) + 2
+x6 = rnorm(80) + 1
+x7 = rnorm(80)
+
+##  peak is unknown, so we test for each possible position
+statistics <- sapply(1:7, function(i)
+ddst.umbrellaknownp.test(list(x1, x2, x3, x4, x5, x6, x7), p = i, t.p = 2.2, t.n = 2.2)$statistic)
+
+statistics
+max(statistics)
+
