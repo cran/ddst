@@ -1,6 +1,6 @@
-29114a2a7cda7c5b5aee0f6a1bd3d279 *DESCRIPTION
+e563dec586d5f25b82c4f8ed57de9eb0 *DESCRIPTION
 84a7f906c87efde36933e1627fbcf9d3 *NAMESPACE
-06a02c98718b38beb3cf53efc93247c4 *NEWS.md
+03af2a5b4aa05045abc4d150f7820bb8 *NEWS.md
 2701e42d88207d7e8a3a756296b5725b *R/ddst.againststochdom.test.R
 ccb8528395f441958c10ccb4bbf37809 *R/ddst.evd.test.R
 bec897b01aa261d846048e95256cbe5a *R/ddst.exp.test.R
@@ -19,7 +19,7 @@ a5ff2c20dfe61fdbc00bba1eebbd8bed *R/ddst.twosample.test.R
 f83e0d3f2741c0162afbcb755a5939b1 *build/vignette.rds
 8d64a3721a67078f682d1c1a27083f31 *inst/doc/examples_all.R
 10d9c63c5efab9e41dc6c5d0de960853 *inst/doc/examples_all.Rmd
-da35b2990340d062cadbbfda51d09873 *inst/doc/examples_all.html
+f087b7f7ff14f2e4a88f177954addb29 *inst/doc/examples_all.html
 1aa3dfad90264e2bfa6be1c8cc8d3ca2 *man/ddst.againststochdom.test.Rd
 e527d1653e7aaaa3a0183740585d5f2f *man/ddst.evd.test.Rd
 639147ca88b79f2e8916935cc59bf0ce *man/ddst.exp.test.Rd

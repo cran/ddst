@@ -1,10 +1,7 @@
 Package: ddst
 Title: Data Driven Smooth Tests
-Version: 1.6.11
-Authors@R: c(person("Przemyslaw", "Biecek", email = "przemyslaw.biecek@gmail.com", 
-              role = c("aut", "cre"),
-              comment = c(ORCID = "0000-0001-8423-1823")),
-             person("Teresa", "Ledwina", role = c("aut")),
+Version: 1.6.12
+Authors@R: c(person("Przemyslaw", "Biecek", email = "przemyslaw.biecek@gmail.com", role = c("aut", "cre")),
              person("Grzegorz", "Wylupek", role = c("aut"))
              )
 Description: Smooth tests are data driven (alternative hypothesis is dynamically selected based on data). 
@@ -24,11 +21,9 @@ BugReports: https://github.com/pbiecek/ddst/issues
 VignetteBuilder: knitr
 RoxygenNote: 7.3.3
 NeedsCompilation: no
-Packaged: 2026-09-03 20:06:00 UTC; pbiecek
-Author: Przemyslaw Biecek [aut, cre] (ORCID:
-    <https://orcid.org/0000-0001-8423-1823>),
-  Teresa Ledwina [aut],
+Packaged: 2026-10-19 15:32:48 UTC; pbiecek
+Author: Przemyslaw Biecek [aut, cre],
   Grzegorz Wylupek [aut]
 Maintainer: Przemyslaw Biecek <przemyslaw.biecek@gmail.com>
 Repository: CRAN
-Date/Publication: 2026-09-12 05:10:02 UTC
+Date/Publication: 2026-10-19 16:50:02 UTC

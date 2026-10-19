@@ -1,3 +1,8 @@
+ddst 1.6.11
+----------------
+
+* updated list of authors
+
 ddst 1.6.10
 ----------------
 
